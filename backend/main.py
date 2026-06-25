@@ -95,12 +95,12 @@ def chat_with_agent(payload: ChatRequestSchema, db: Session = Depends(database.g
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 FRONTEND_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "..", "frontend"))
 
-frontend_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend")
+frontend_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "frontend")
 app.mount("/static", StaticFiles(directory=frontend_path), name="static")
 
 @app.get("/")
 def read_index():
-    index_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend", "index.html")
+   index_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "frontend", "index.html")
     if os.path.exists(index_path):
         return FileResponse(index_path)
     return {"message": f"Frontend index.html is missing at {index_path}."}
