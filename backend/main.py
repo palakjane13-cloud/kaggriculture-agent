@@ -92,9 +92,6 @@ def chat_with_agent(payload: ChatRequestSchema, db: Session = Depends(database.g
     return {"response": agent_response, "todos": [t.to_dict() for t in todos]}
 
 # Resolve frontend path relative to this file
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-FRONTEND_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "..", "frontend"))
-
 frontend_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "frontend")
 app.mount("/static", StaticFiles(directory=frontend_path), name="static")
 
